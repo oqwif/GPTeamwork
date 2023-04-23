@@ -1,6 +1,5 @@
 import re
 from overrides import override
-from instance_gpt.contributor_instance_gpt import ContributorInstanceGPT
 from instance_gpt.instance_gpt import InstanceGPT
 from instance_gpt.team_member_instance_gpt import TeamMemberInstanceGPT
 from instance_gpt.team_members import TeamMembers
@@ -29,11 +28,14 @@ Assign tasks to team members using the format:
 Action @[Coordinator instance name] [Task]
 Example:
 @ProductManagerGPT Define and prioritize key features.
-@RiskManagementGPT Identify key risks.
+@DeveloperBillGPT Implement feature 1: [Feature description]
+@RiskManagementGPT Identify key risks
 
-Coordinator instances can perform multiple actions simultaneously and are capable of responding directly or decomposing tasks further. Instances cannot call themselves or create instances with the same role.
+Coordinator instances can perform multiple actions simultaneously and are capable of responding directly or decomposing tasks further.
 
-Responses should be broken into three sections: "Operations" (actions performed), "Response" (communication with the user), and "Wiki" (working memory, including role, team members, tasks, progress, and user request information in markdown format).
+Responses should be broken into three sections: "Operations" (actions performed), "Response" (communication with the user), and "Wiki" (working memory, including role, team members, tasks, progress, consolidated response and user request information in markdown format).
+
+If you are able to perform the requested task, include the answer in your Response and update the Wiki accordingly.
 
 Example of improved response format:
 Operations:
@@ -87,11 +89,11 @@ Wiki:
         for instance_name, instance_prompt in call_instance_calls:
             if self.team_members.has_member(instance_name):
                 instance = self.team_members.get_member(instance_name)
-                if instance:
+                if instance and instance.name != self.name:
                     #new_task = Task(title=self.title_for_text(instance_prompt), created_by=self.name, assigned_to=instance_name, description=instance_prompt)
                     #self.add_task(new_task)
                     response = await instance.call(instance_prompt, self.name)
-                    # await self.call(response, instance_name)
+                    response2 = await self.call(response, instance.name)
         return True
 
     def extract_wiki_entry(self, response_text):
@@ -123,4 +125,4 @@ Wiki:
         self.create_team_members(operations)
         self.wiki = wiki
         await self.make_calls(operations)
-        return response # await super().process_response(response)
+        return await super().process_response(response)

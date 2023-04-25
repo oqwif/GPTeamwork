@@ -19,7 +19,7 @@ class InstanceGPT:
         messages = [{"role": "system", "content": 'You are a helpful assistant'},
             {"role": "user", "content": f"Create a title for this text:\n{text}"}]
         response = openai.ChatCompletion.create(
-            model=openai_model,
+            model="gpt-3.5-turbo",
             messages=messages,
             max_tokens=500,
             temperature=0.0,

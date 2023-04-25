@@ -1,42 +1,15 @@
 # GPTeamwork
 
-GPTeamwork is an advanced application that utilizes the power of ChatGPT to manage and streamline various aspects of a business by breaking down tasks into multiple distributed ChatGPT instances. The app creates and manages a team of manager and contributor instances that collaborate and communicate to accomplish tasks and provide efficient solutions for businesses.
+GPTeamwork is an innovative and powerful application designed to streamline the process of completing complex tasks by intelligently distributing responsibilities among multiple ChatGPT instances. Drawing inspiration from human organizational structures, GPTeamwork aligns ChatGPT instances to work collaboratively and efficiently, fostering seamless communication to achieve a common goal.
+
+The primary objective of GPTeamwork is to break down and delegate intricate tasks to various specialized ChatGPT instances. This delegation allows the instances to operate much like a well-coordinated human team, focusing on their specific areas of expertise. By emulating organizational structures commonly found in the professional world, GPTeamwork ensures a more efficient and harmonious workflow, paving the way for better results in less time.
+
+In GPTeamwork, instances interact with each other, sharing progress, exchanging ideas, and collaborating on problems. This inter-instance communication creates a powerful synergy, ensuring each instance remains focused on the collective goal and can respond dynamically to changes in project requirements or unforeseen challenges.
+
+Whether you're tackling a demanding software development project or a multifaceted marketing campaign, GPTeamwork provides the infrastructure and capabilities needed to manage tasks effectively and meet even the most challenging objectives. Experience the future of collaborative problem-solving with GPTeamwork.
 
 ## Features
 
-- Utilizes ChatGPT technology for efficient task management
-- Employs manager instances for various business functions
-- Employs contributor instances for specific tasks
-- Seamless integration with external services like Shopify, GitHub, and KanbanBoardService
-- Intuitive natural language input for ease of use
-
-## Manager Instances
-
-Manager instances are responsible for managing different business functions and creating other manager or contributor instances as needed. Examples include:
-
-- CEOGPT
-- CFOGPT
-- ProductManagerGPT
-- RiskManagerGPT
-
-## Contributor Instances
-
-Contributor instances focus on solving tasks by calling shared service instances. They don't manage a team of other instances. Examples include:
-
-- ShopifyAssistantGPT
-- KanbanAssistantGPT
-- DeveloperAliceGPT
-- DeveloperBobGPT
-
-## Service Instances
-
-Service instances provide essential services and integrations for various tasks, such as:
-
-- KanbanBoardService
-- ShopifyService
-- GitHubService
 
 ## Usage
-
-Manager instances can create and manage other instances using the following format:
 

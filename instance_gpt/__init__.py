@@ -1,7 +1,5 @@
 from .team_members import TeamMembers
 from .team_member_instance_gpt import TeamMemberInstanceGPT
-from .contributor_instance_gpt import ContributorInstanceGPT
-from .manager_instance_gpt import ManagerInstanceGPT
 from .coordinator_instance_gpt import CoordinatorInstanceGPT
 from .kanbanboard_gpt import KanbanBoardGPT
 from .python_developer_gpt import PythonDeveloperGPT

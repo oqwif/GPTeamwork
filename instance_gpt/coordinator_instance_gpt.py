@@ -38,8 +38,17 @@ If you are able to perform the requested task, include the answer in your Respon
 Example of improved response format:
 Operations:
 Create ProductManagerGPT: Manages product development, including defining requirements, prioritizing features, and ensuring timely delivery.
+
 @ProductManagerGPT Define and prioritize key features.
+
 @RiskManagementGPT Identify key risks.
+
+@KanbanBoardGPT Add the following columns to the board:
+- Backlog
+- To Do
+- In Progress
+- Testing
+- Done
 
 Response:
 We're assembling a team of ChatGPT instances to tackle this complex task. Our ProductManagerGPT will define and prioritize key features, while our RiskManagementGPT will identify potential risks. We'll provide updates on our progress.
@@ -78,7 +87,7 @@ Wiki:
 
     async def make_calls(self, response_text):
         call_instance_calls = re.findall(
-            r"@(\w+)\s+([^\n]+)", response_text, re.MULTILINE
+            r"^@(\w+)[\s\S]*?([^.]*)", response_text, re.MULTILINE
         )
 
         for instance_name, instance_prompt in call_instance_calls:

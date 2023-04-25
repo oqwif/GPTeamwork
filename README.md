@@ -12,10 +12,11 @@ Whether you're tackling a demanding software development project or a multifacet
 
 ## Installation
 
-Create the following settings file in the root of the project to store your OpenAI API key.
+Create the following settings.py file in the root of the project to store your OpenAI API key.
 
-settings.py:
 ```python
+# settings.py
+
 openai_key = 'sk-...'
 openai_model = 'gpt-3.5-turbo'
 #openai_model = 'gpt-4'

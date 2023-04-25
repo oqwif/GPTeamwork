@@ -14,8 +14,8 @@ job_description = "Develop a Tic Tac Toe app written in Python and using Kanban 
 #job_description = "Build an organisation that hypothesises and tests ideas to combat climate change."
 team_members = TeamMembers()
 team_members.add_member(KanbanBoardGPT(name="KanbanBoardGPT", role_description="Manages the Kanban board"))
-# team_members.add_member(PythonDeveloperGPT(name="DeveloperAliceGPT", role_description="Develops Python code. Is an expert in Python"))
-# team_members.add_member(PythonDeveloperGPT(name="DeveloperBobGPT", role_description="Develops Python code. Is an expert in Python"))
+team_members.add_member(PythonDeveloperGPT(name="DeveloperAliceGPT", role_description="Develops Python code. Is an expert in Python"))
+team_members.add_member(PythonDeveloperGPT(name="DeveloperBobGPT", role_description="Develops Python code. Is an expert in Python"))
 
 headCoordinator = CoordinatorInstanceGPT(
     name = "TeamLeadGPT",

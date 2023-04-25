@@ -1,8 +1,5 @@
 import openai
 from overrides import final
-from models import Task
-from socket_io import socketio
-from database import db
 from settings import openai_model
 
 class InstanceGPT:
@@ -17,19 +14,6 @@ class InstanceGPT:
     # Override this method to provide a description of the instance
     def description(self) -> str:
         return f"{self.name}: A helpful assistant instance"
-
-    def add_task(self, task: Task):
-        #db.session.add(task)
-        #db.session.commit()
-        task_data = {
-                        "id": task.id,
-                        "title": task.title,
-                        "status": task.status,
-                        "created_by": task.created_by,
-                        "assigned_to": task.assigned_to,
-                        "description": task.description
-                    }
-        #socketio.emit('task_added', task_data)
 
     def title_for_text(self, text: str) -> str:
         messages = [{"role": "system", "content": 'You are a helpful assistant'},

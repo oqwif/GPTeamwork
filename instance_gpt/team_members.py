@@ -1,8 +1,6 @@
 
-
 # A class that maintains a list of team members and their roles
 from instance_gpt.instance_gpt import InstanceGPT
-
 
 class TeamMembers:
     def __init__(self):

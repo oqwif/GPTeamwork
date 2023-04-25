@@ -3,8 +3,6 @@ from overrides import override
 from instance_gpt.instance_gpt import InstanceGPT
 from instance_gpt.team_member_instance_gpt import TeamMemberInstanceGPT
 from instance_gpt.team_members import TeamMembers
-from models import Task
-
 
 
 class CoordinatorInstanceGPT(TeamMemberInstanceGPT):
@@ -69,9 +67,6 @@ Wiki:
 
         for instance_name, instance_prompt in create_calls:
             if not self.team_members.has_member(instance_name):
-                new_task = Task(title=f"Create {instance_name}", created_by=self.name, assigned_to=instance_name, description=f"Create {instance_name}\n\n{instance_prompt}")
-                new_task.status = 'Done'
-                self.add_task(new_task)
                 self.team_members.add_member(
                     CoordinatorInstanceGPT(
                         instance_name,

@@ -3,9 +3,6 @@ from overrides import override
 from instance_gpt.instance_gpt import InstanceGPT
 from instance_gpt.team_member_instance_gpt import TeamMemberInstanceGPT
 from instance_gpt.team_members import TeamMembers
-from models import Task
-
-
 
 class PythonDeveloperGPT(TeamMemberInstanceGPT):
     def __init__(self, name: str, role_description: str, team_members: TeamMembers = None, manager: InstanceGPT = None):

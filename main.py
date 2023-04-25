@@ -1,6 +1,6 @@
 import openai
 import asyncio
-from instance_gpt import ManagerInstanceGPT, CoordinatorInstanceGPT, KanbanBoardGPT, PythonDeveloperGPT
+from instance_gpt import CoordinatorInstanceGPT, KanbanBoardGPT, PythonDeveloperGPT
 from instance_gpt.team_members import TeamMembers
 from settings import openai_key
 

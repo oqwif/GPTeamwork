@@ -1,5 +1,4 @@
 from overrides import override
-import openai
 import re
 
 from instance_gpt.instance_gpt import InstanceGPT

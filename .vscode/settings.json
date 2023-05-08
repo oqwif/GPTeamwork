@@ -1,0 +1,6 @@
+{
+    "python.analysis.extraPaths": [
+        "./instance_gpt"
+    ]
+    
+}

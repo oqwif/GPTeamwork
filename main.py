@@ -1,11 +1,14 @@
 import openai
 import asyncio
+from typing import Dict
 from instance_gpt import CoordinatorInstanceGPT, KanbanBoardGPT, PythonDeveloperGPT
 from instance_gpt.team_members import TeamMembers
 from settings import openai_key
 
+
 # Set your OpenAI API key
 openai.api_key = openai_key
+
 
 # Ask the user for the decsription of the job
 job_description = "Develop a Tic Tac Toe app written in Python and using Kanban methodology" # input("What is the job description? ")
@@ -25,6 +28,9 @@ headCoordinator = CoordinatorInstanceGPT(
 
 async def main():
     await headCoordinator.call(user_prompt=job_description, caller_name="Boss")
-
+    for name, member in team_members.get_members().items():
+        print(f"Usage for {name}\n")
+        print(member.usage)
+        print("\n")
 if __name__ == "__main__":
     asyncio.run(main())

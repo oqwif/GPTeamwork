@@ -1,16 +1,17 @@
 import openai
 from overrides import final
-from settings import openai_model
+from settings import openai_model, overall_usage
+from typing import Dict
 
 class InstanceGPT:
     def __init__(self, name: str):
         self.name = name
         self.messages = [{"role": "system", "content" : 'You are a helpful assistant'}]
-
+        self.usage = {'prompt_tokens': 0, 'completion_tokens': 0, 'total_tokens': 0, 'calls_made': 0}
     # Override this method to provide a system prompt for the instance
     def construct_system_prompt(self):
         return ''
-
+    
     # Override this method to provide a description of the instance
     def description(self) -> str:
         return f"{self.name}: A helpful assistant instance"
@@ -57,7 +58,8 @@ class InstanceGPT:
             top_p=1,
         )
         completion = response.choices[0]["message"]["content"]
-
+        self.process_token_totals(response.usage)
+        global overall_usage
         bold_caller_name = f"\033[1m@{caller_name}\033[0m"
         bold_name = f"\033[1m@{self.name}\033[0m"
         print(f"{bold_caller_name} -> {bold_name}\n" +
@@ -65,6 +67,10 @@ class InstanceGPT:
               f"{prompt}\n\n")
         print(f"{bold_name}\n\n")
         print(f"{completion}\n\n")
+        print(f"**** Usage for {bold_name} (Overall Usage) - ")
+        for type, count in self.usage.items(): 
+            print(f"        {type} - {count} ({overall_usage[type]})")
+        
         print(f"###########################################################################\n\n")
 
         return completion
@@ -86,3 +92,19 @@ class InstanceGPT:
         """
         self.messages.append({"role": "assistant", "content" : response_text})
         return response_text
+    
+    def process_token_totals(self, usage: Dict[str, int]) -> None:
+  
+        
+        global overall_usage
+        self.usage['calls_made'] += 1
+        overall_usage['calls_made'] += 1
+        # usage_string = f" Calls made by {self.name} = {self.usage['calls_made'] "
+        for type, tokens in usage.items():
+            self.usage[type] += tokens
+            overall_usage[type] += tokens
+            # usage_string += f"{self.usage
+
+    
+
+

@@ -3,7 +3,7 @@ import asyncio
 from typing import Dict
 from instance_gpt import CoordinatorInstanceGPT, KanbanBoardGPT, PythonDeveloperGPT
 from instance_gpt.team_members import TeamMembers
-from settings import openai_key
+from settings import openai_key,  overall_usage
 
 
 # Set your OpenAI API key
@@ -29,8 +29,9 @@ headCoordinator = CoordinatorInstanceGPT(
 async def main():
     await headCoordinator.call(user_prompt=job_description, caller_name="Boss")
     for name, member in team_members.get_members().items():
-        print(f"Usage for {name}\n")
-        print(member.usage)
-        print("\n")
+        print(f"Usage for {name} - {member.usage}")
+    print(f"Usage for TeamLeadGPT - {headCoordinator.usage}")
+    print(f"Total Usage - {overall_usage}")
+
 if __name__ == "__main__":
     asyncio.run(main())
